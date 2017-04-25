@@ -1,0 +1,23 @@
+[dev-packages]
+pytest = "*"
+pytest-sugar = "*"
+factory-boy = "*"
+pdbpp = "*"
+honcho = "*"
+webtest = "*"
+flask-debugtoolbar = "*"
+ipython = "*"
+
+[packages]
+psycopg2 = "*"
+envparse = "*"
+gunicorn = "*"
+future = "*"
+flask = "*"
+flask-wtf = "*"
+flask-bcrypt = "*"
+flask-babel = "*"
+flask-login = "*"
+flask-bootstrap = "*"
+flask-migrate = "*"
+

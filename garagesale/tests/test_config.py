@@ -1,0 +1,23 @@
+# coding: utf-8
+
+"""
+Test applicatin configs and settings
+"""
+
+from garagesale.app import create_app
+from garagesale.settings import Development, Production
+
+
+def test_production_config():
+    """ Test the Production configurations """
+
+    app = create_app(Production, initial_admin=False)
+    assert app.config['DEBUG'] is False
+    assert app.config['DEBUG_TB_ENABLED'] is False
+
+
+def test_dev_config():
+    """ Test the Development configurations """
+
+    app = create_app(Development, initial_admin=False)
+    assert app.config['DEBUG'] is True

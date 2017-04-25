@@ -1,0 +1,9 @@
+[run]
+omit = *migrations*,*test_*,garagesale/tests/*,garagesale/commands.py,garagesale/conftest.py
+
+[report]
+exclude_lines =
+    def __repr__
+    def __str__
+    def __unicode__
+    pragma: no cover

@@ -1,0 +1,10 @@
+-r production.txt
+
+pytest = "*"
+pytest-sugar = "*"
+factory-boy = "*"
+pdbpp = "*"
+honcho = "*"
+webtest = "*"
+flask-debugtoolbar = "*"
+ipython = "*"

@@ -1,0 +1,7 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "base.jinja" %}
+
+{% block content %}
+    {{ wtf.quick_form(form, id="login_form") }}
+{% endblock %}
+
