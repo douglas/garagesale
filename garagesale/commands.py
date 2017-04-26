@@ -9,6 +9,11 @@ import sys
 import shutil
 import click
 
+from flask.cli import with_appcontext
+
+from garagesale.database import db
+from garagesale.apps.auth.models import User
+
 
 @click.command()
 def test():
@@ -37,3 +42,21 @@ def clean():
                 full_pathname = os.path.join(dirpath, filename)
                 click.echo('Removing {}'.format(full_pathname))
                 os.remove(full_pathname)
+
+
+@click.command()
+@with_appcontext
+def create_admin():
+    """ Add the admin user """
+
+    if User.query.count() == 0:
+        admin = User.create(
+            username="admin",
+            email="admin@admin.com",
+            password="admin",
+            active=True,
+            is_admin=True
+        )
+        db.session.add(admin)
+        db.session.commit()
+        print("Initial admin user added.")

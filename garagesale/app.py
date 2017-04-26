@@ -14,7 +14,7 @@ from garagesale.extensions import bcrypt, login_manager, bootstrap, migrate
 from garagesale.database import db
 
 
-def create_app(environment=Production, initial_admin=True):
+def create_app(environment=Production):
     """
     The application factory
     """
@@ -26,29 +26,7 @@ def create_app(environment=Production, initial_admin=True):
     register_blueprints(app)
     register_commands(app)
 
-    if initial_admin is True:
-        create_admin(app)
-
     return app
-
-
-def create_admin(app):
-    """ Add the admin user """
-
-    from garagesale.apps.auth.models import User
-
-    with app.app_context():
-        if User.query.count() == 0:
-            admin = User.create(
-                username="admin",
-                email="admin@admin.com",
-                password="admin",
-                active=True,
-                is_admin=True
-            )
-            db.session.add(admin)
-            db.session.commit()
-            print("Initial admin user added.")
 
 
 def register_extensions(app):
@@ -78,3 +56,4 @@ def register_commands(app):
 
     app.cli.add_command(commands.test)
     app.cli.add_command(commands.clean)
+    app.cli.add_command(commands.create_admin)

@@ -16,7 +16,7 @@ from garagesale.apps.auth.tests.factories import UserFactory
 @pytest.fixture
 def app():
     """An application for the tests."""
-    _app = create_app(Test, initial_admin=False)
+    _app = create_app(Test)
     ctx = _app.test_request_context()
     ctx.push()
 
